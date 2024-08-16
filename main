@@ -1,0 +1,26 @@
+public class LargestPrime {
+//This program determines the largest prime factor of a given number
+ 
+    public static int getLargestPrime(int number) {
+
+//Validation check - negative numbers, 0 and 1 return -1
+        if (number < 2) {
+            return -1;
+        }
+ 
+        int factor = -1;
+//Iterate Through Factors
+        for (int i = 2; i * i <= number; i++) {
+            if (number % i != 0) {  //Check for Factors - if number % i is 0, If it's not, move to the next iteration using continue
+                continue;
+            }
+            factor = i;  //Store factors in factor
+            while (number % i == 0) {
+                number /= i;
+            }
+        }
+        return number == 1 ? factor : number;
+/*if the number is equal to 1, it means the factorization has been completed successfully and the largest prime factor 
+is stored in the factor variable. Return factor. If number is not 1, it means it is itself a prime number, so return number*/
+    }
+}
